@@ -1,0 +1,66 @@
+Login the Master Machine
+IP assumed x.x.x.x
+
+Download the latest repository of puppet
+
+rpm -ivh <Copy form this link as per your version " https://yum.puppetlabs.com/ ">
+
+Install puppet-server
+yum install puppet-server
+
+update the Host file of Master
+vi /etc/hosts
+x.x.x.x     puppet puppet.example.com
+
+Login the Client  machine
+ip assumed
+C.C.C.C
+
+Edit configuration file of puppet master
+
+vi /etc/puppet/puppet.conf
+
+add 2 lines in [main] block
+
+[main]
+    dns_alt_names = puppet.puppetmaster.example.com
+    certname = puppet
+
+
+
+Check the Puppet service 
+turn it on and off
+
+service puppetmaster start
+service puppetmaster stop
+
+
+
+Download the latest repository of puppet
+
+rpm -ivh <Copy form this link as per your version " https://yum.puppetlabs.com/ ">
+
+Install puppet
+yum install puppet
+
+update the Host file of Master
+vi /etc/hosts
+x.x.x.x     puppet puppetmaster.example.com
+C.C.C.C     puppetagent
+
+Edit configuration file of puppet master
+
+vi /etc/puppet/puppet.conf
+
+add 2 lines in [main] block
+
+[agent]
+    server = 192.168.1.30
+
+Check the Puppet service 
+turn it on and off
+
+service puppet start
+service puppet stop
+
+
